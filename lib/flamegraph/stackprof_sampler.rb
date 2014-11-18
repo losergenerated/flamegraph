@@ -1,7 +1,8 @@
 class Flamegraph::StackProfSampler
-  def self.collect(fidelity=0.5)
+  def self.collect(fidelity=0.5, opts = {})
+    mode = opts[:mode]  || :cpu
 
-    result = StackProf.run(mode: :wall,
+    result = StackProf.run(mode: mode,
                            raw: true,
                            aggregate: false,
                            interval: (fidelity * 1000).to_i) do

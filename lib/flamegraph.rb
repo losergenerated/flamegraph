@@ -25,7 +25,7 @@ module Flamegraph
     backtraces =
       if defined? StackProf
         require "flamegraph/stackprof_sampler" unless defined? StackProfSampler
-        StackProfSampler.collect(fidelity) do
+        StackProfSampler.collect(fidelity, opts) do
           yield
         end
       else
